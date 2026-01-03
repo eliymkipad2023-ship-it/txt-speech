@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本語テキスト読み上げ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎙️ 日本語テキスト読み上げ</h1>
+            <p class="subtitle">テキストを入力して、自然な日本語音声で再生・ダウンロード</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <label for="text-input">読み上げるテキスト</label>
+                <textarea
+                    id="text-input"
+                    placeholder="ここにテキストを入力してください..."
+                    rows="6"
+                >こんにちは。これはテキスト読み上げアプリのサンプルです。</textarea>
+                <div class="char-count">
+                    <span id="char-count">0</span> 文字
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <div class="setting-group">
+                    <label for="voice-select">音声</label>
+                    <select id="voice-select">
+                        <option value="">音声を読み込み中...</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="rate-slider">速度: <span id="rate-value">1.0</span>x</label>
+                    <input type="range" id="rate-slider" min="0.5" max="2" step="0.1" value="1">
+                </div>
+
+                <div class="setting-group">
+                    <label for="pitch-slider">ピッチ: <span id="pitch-value">1.0</span></label>
+                    <input type="range" id="pitch-slider" min="0.5" max="2" step="0.1" value="1">
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <button id="play-btn" class="btn btn-primary">
+                    <span class="btn-icon">▶️</span>
+                    再生
+                </button>
+                <button id="stop-btn" class="btn btn-secondary" disabled>
+                    <span class="btn-icon">⏹️</span>
+                    停止
+                </button>
+                <button id="download-btn" class="btn btn-success">
+                    <span class="btn-icon">💾</span>
+                    ダウンロード
+                </button>
+            </div>
+
+            <div id="status" class="status"></div>
+
+            <!-- 録音中のプログレスバー -->
+            <div id="recording-progress" class="recording-progress hidden">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <p id="recording-status">録音準備中...</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Web Speech API を使用しています</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
